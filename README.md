@@ -1,4 +1,4 @@
 ProyectoProg3
 =============
 
-Proyecto de Programacion Web (El Psy Congroo)
+Proyecto de Programacion 3 (El Psy Congroo)
