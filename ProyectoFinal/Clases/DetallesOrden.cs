@@ -11,7 +11,7 @@ namespace ProyectoFinal.Clases{
     class Order_Details{
 
         #region Atributos
-            [Column(Name = "OrderID", IsDbGenerated = true, IsPrimaryKey = true, CanBeNull = false)]  
+            [Column(Name = "OrderID", IsPrimaryKey = true, CanBeNull = false)]  
             public Int32 OrderID
             { get; set; }
 

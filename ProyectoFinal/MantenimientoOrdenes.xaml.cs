@@ -16,6 +16,7 @@ using System.Data.Linq;
 using System.ComponentModel;
 using ProyectoFinal.NorthwindDataSetTableAdapters;
 using System.Data.SqlClient;
+using System.Data;
 
 namespace ProyectoFinal
 {
@@ -43,20 +44,27 @@ namespace ProyectoFinal
             northwindDataSetOrder_DetailsTableAdapter.Fill(northwindDataSet.Order_Details);
             CollectionViewSource order_DetailsViewSource = ((CollectionViewSource)(this.FindResource("order_DetailsViewSource")));
             order_DetailsViewSource.View.MoveCurrentToFirst();
-
+      
         }
 
         private void btnAgregar_Click(object sender, RoutedEventArgs e)
         {
             Order_Details detalles = new Order_Details();
+            detalles.OrderID = Int16.Parse(OrderID.Text);
             detalles.ProductID = ProductID.Text;
             detalles.Quantity = Int16.Parse(Quantity.Text);
             detalles.UnitPrice = Int16.Parse(UnitPrice.Text);
-            detalles.Discount = Decimal.Parse(Discount.Text);
+            detalles.Discount =  Decimal.Parse(Discount.Text);
 
                 db.GetTable<Order_Details>().InsertOnSubmit(detalles);
                 db.SubmitChanges();
-                MessageBox.Show("El Registro Ha sido Agregado", "Mensaje !!!!!!!!!!!!");
+                MessageBox.Show("El Registro Ha sido Agregado", "Mensaje");
+
+        }
+
+        private void order_DetailsDataGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            MessageBox.Show(((DataRowView)order_DetailsDataGrid.SelectedItem).Row["OrderID"].ToString());
 
         }
     }
